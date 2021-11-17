@@ -1,8 +1,8 @@
-# _{Application Name}_
+# _Bike API_
 
 #### By _Kate Kiatsiri**_
 
-#### _{Brief description of application}_
+#### _Bike Index API_
 
 ## Technologies Used
 
@@ -17,7 +17,7 @@
 
 ## Description
 
-_{This is a detailed description of your application. Give as much detail as needed to explain what the application does as well as any other information you want users or other developers to have.}_
+_Build an app using the Bike Index API. Your app could list all the bikes that have been registered as stolen in a given location in the past week. Or it could display statistics - for instance, you could see which manufacturer is most frequently stolen in a given area._
 
 ## Setup/Installation Requirements
 

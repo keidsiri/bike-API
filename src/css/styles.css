@@ -1,3 +1,4 @@
-body {
-  background-color: aliceblue;
+.bike-img {
+  max-width: 300px;
+  height: auto;
 }
