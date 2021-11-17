@@ -1,4 +1,8 @@
 .bike-img {
-  max-width: 300px;
+  max-width: 40%;
   height: auto;
+}
+
+.bike-img {
+  box-shadow: 0px 1px 15px rgb(0, 0, 0);
 }

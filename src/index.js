@@ -4,6 +4,26 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 import BikeRegService from "./js/bike.js";
 
+function mode(array) {
+  if(array.length == 0)
+      return null;
+  let modeMap = {};
+  let maxEl = array[0], maxCount = 1;
+  for(var i = 0; i < array.length; i++) {
+      let el = array[i];
+      if(modeMap[el] == null) {
+          modeMap[el] = 1; 
+      } else {
+          modeMap[el]++;
+      }    
+      if(modeMap[el] > maxCount) {
+          maxEl = el;
+          maxCount = modeMap[el];
+      }
+  }
+  return maxEl;
+}
+
 
 $(document).ready(function() {
   $('#weatherLocation').click(function() {
@@ -13,6 +33,12 @@ $(document).ready(function() {
     let promise = BikeRegService.getBikeReg(city);
     promise.then(function(response) {
       const body = JSON.parse(response);
+
+      let bikeBrand = [] ;
+      for ( var i = 0 ; i < body.bikes.length ; i++) {
+        bikeBrand.push(body.bikes[i].manufacturer_name);
+      }
+
       let bikesInfo = [];
       for (let i = 0; i < body.bikes.length; i++) {
         if ( body.bikes[i].large_img !== null ) {
@@ -24,6 +50,7 @@ $(document).ready(function() {
         bikesInfo.push(`The manufacturer of the bike is ${body.bikes[i].manufacturer_name}<br>`);
         bikesInfo.push(`It was lost in ${body.bikes[i].stolen_location}<br>`);
         bikesInfo.push(`<a href=${body.bikes[i].url}>Click here for more details</a><br>`);
+        bikesInfo.push(`The most common bike being stolen is ${mode(bikeBrand)}<br>`);
         $('.showBikes').html(bikesInfo);
       }  
     }, function(error) {
@@ -32,6 +59,8 @@ $(document).ready(function() {
     });
   });
 });
+
+
 
 
 // if ( body.bikes[i].large_img !== null ) {
