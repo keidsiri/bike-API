@@ -4,26 +4,25 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 import BikeRegService from "./js/bike.js";
 
-function mode(array) {
-  if(array.length == 0)
-      return null;
-  let modeMap = {};
-  let maxEl = array[0], maxCount = 1;
-  for(var i = 0; i < array.length; i++) {
-      let el = array[i];
-      if(modeMap[el] == null) {
-          modeMap[el] = 1; 
-      } else {
-          modeMap[el]++;
-      }    
-      if(modeMap[el] > maxCount) {
-          maxEl = el;
-          maxCount = modeMap[el];
-      }
-  }
-  return maxEl;
-}
-
+// function mode(array) {
+//   if(array.length == 0)
+//       return null;
+//   let modeMap = {};
+//   let maxEl = array[0], maxCount = 1;
+//   for(var i = 0; i < array.length; i++) {
+//       let el = array[i];
+//       if(modeMap[el] == null) {
+//           modeMap[el] = 1; 
+//       } else {
+//           modeMap[el]++;
+//       }    
+//       if(modeMap[el] > maxCount) {
+//           maxEl = el;
+//           maxCount = modeMap[el];
+//       }
+//   }
+//   return maxEl;
+// }
 
 $(document).ready(function() {
   $('#weatherLocation').click(function() {
@@ -35,10 +34,14 @@ $(document).ready(function() {
       const body = JSON.parse(response);
 
       let bikeBrand = [] ;
+      let stolenPlace = [];
       for ( var i = 0 ; i < body.bikes.length ; i++) {
         bikeBrand.push(body.bikes[i].manufacturer_name);
-      }
-
+        stolenPlace.push(body.bikes[i].stolen_location);
+      }      
+      const mostStolenBrand = new BikeRegService().mode(bikeBrand);
+      const mostStolenPlace = new BikeRegService().mode(stolenPlace);
+      
       let bikesInfo = [];
       for (let i = 0; i < body.bikes.length; i++) {
         if ( body.bikes[i].large_img !== null ) {
@@ -49,8 +52,9 @@ $(document).ready(function() {
         bikesInfo.push(`The bike info is <strong>${body.bikes[i].title}</strong><br>`);
         bikesInfo.push(`The manufacturer of the bike is ${body.bikes[i].manufacturer_name}<br>`);
         bikesInfo.push(`It was lost in ${body.bikes[i].stolen_location}<br>`);
+        bikesInfo.push(`The most common bike being stolen is ${mostStolenBrand}<br>`);
+        bikesInfo.push(`The most common location where bikes are being stolen within 200 miles is ${mostStolenPlace}<br>`);
         bikesInfo.push(`<a href=${body.bikes[i].url}>Click here for more details</a><br>`);
-        bikesInfo.push(`The most common bike being stolen is ${mode(bikeBrand)}<br>`);
         $('.showBikes').html(bikesInfo);
       }  
     }, function(error) {
