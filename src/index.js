@@ -5,7 +5,6 @@ import './css/styles.css';
 import BikeRegService from "./js/bike.js";
 
 
-
 $(document).ready(function() {
   $('#weatherLocation').click(function() {
     const city = $('#location').val();
@@ -14,16 +13,6 @@ $(document).ready(function() {
     let promise = BikeRegService.getBikeReg(city);
     promise.then(function(response) {
       const body = JSON.parse(response);
-
-      let bikeBrand = [] ;
-      let stolenPlace = [];
-      for ( var i = 0 ; i < body.bikes.length ; i++) {
-        bikeBrand.push(body.bikes[i].manufacturer_name);
-        stolenPlace.push(body.bikes[i].stolen_location);
-      }      
-      const mostStolenBrand = new BikeRegService().mode(bikeBrand);
-      const mostStolenPlace = new BikeRegService().mode(stolenPlace);
-      
       let bikesInfo = [];
       for (let i = 0; i < body.bikes.length; i++) {
         if ( body.bikes[i].large_img !== null ) {
@@ -31,12 +20,7 @@ $(document).ready(function() {
         } else {
           bikesInfo.push(`<img src="https://cdn.shopify.com/s/files/1/2081/1519/products/1600x1067_US_B_Blue_PROFILE.jpg?v=1590502980" class='bike-img'><br>`);
         }
-        bikesInfo.push(`The bike info is <strong>${body.bikes[i].title}</strong><br>`);
         bikesInfo.push(`The manufacturer of the bike is ${body.bikes[i].manufacturer_name}<br>`);
-        bikesInfo.push(`It was lost in ${body.bikes[i].stolen_location}<br>`);
-        bikesInfo.push(`The most common bike being stolen is ${mostStolenBrand}<br>`);
-        bikesInfo.push(`The most common location where bikes are being stolen within 200 miles is ${mostStolenPlace}<br>`);
-        bikesInfo.push(`<a href=${body.bikes[i].url}>Click here for more details</a><br>`);
         $('.showBikes').html(bikesInfo);
       }  
     }, function(error) {
@@ -45,6 +29,9 @@ $(document).ready(function() {
     });
   });
 });
+
+
+
 
 
 //example
@@ -67,35 +54,6 @@ $(document).ready(function() {
 //       $('.showTemp').text(`The temperature in Kelvins is ${body.main.temp} degrees.`);
 //     }, function(error) {
 //       $('.showErrors').text(`There was an error processing your request: ${error}`);
-//     });
-//   });
-// });
-
-// Code
-// import $ from 'jquery';
-// import 'bootstrap';
-// import 'bootstrap/dist/css/bootstrap.min.css';
-// import './css/styles.css';
-// import BikeRegService from "./js/bike.js";
-
-
-// $(document).ready(function() {
-//   $('#weatherLocation').click(function() {
-//     const city = $('#location').val();
-//     $('#location').val("");
-
-//     let promise = BikeRegService.getBikeReg(city);
-//     promise.then(function(response) {
-//       const body = JSON.parse(response);
-//       let bikesInfo = [];
-//       for (let i = 0; i < body.bikes.length; i++) {
-//         bikesInfo.push(`The manufacturer of the bike is ${body.bikes[i].manufacturer_name}<br>`);
-//         bikesInfo.push(`<img src= ${body.bikes[i].large_img} class='bike-img'>`);
-//         $('.showBikes').html(bikesInfo);
-//       }  
-//     }, function(error) {
-//       $('.showErrors').text(`There was an error processing your request: ${error}`);
-  
 //     });
 //   });
 // });
