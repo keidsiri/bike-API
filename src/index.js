@@ -5,7 +5,6 @@ import './css/styles.css';
 import BikeRegService from "./js/bike.js";
 
 
-
 $(document).ready(function() {
   $('#weatherLocation').click(function() {
     const city = $('#location').val();
@@ -48,7 +47,6 @@ $(document).ready(function() {
 
 
 //example
-
 // function clearFields() {
 //   $('#location').val("");
 //   $('.showErrors').text("");
