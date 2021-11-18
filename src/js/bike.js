@@ -15,6 +15,7 @@ export default class BikeRegService {
     });
   }
 
+  //Add another function for most frequent value from array
   mode(array) {
     if(array.length == 0)
         return null;

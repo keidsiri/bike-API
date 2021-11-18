@@ -4,25 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 import BikeRegService from "./js/bike.js";
 
-// function mode(array) {
-//   if(array.length == 0)
-//       return null;
-//   let modeMap = {};
-//   let maxEl = array[0], maxCount = 1;
-//   for(var i = 0; i < array.length; i++) {
-//       let el = array[i];
-//       if(modeMap[el] == null) {
-//           modeMap[el] = 1; 
-//       } else {
-//           modeMap[el]++;
-//       }    
-//       if(modeMap[el] > maxCount) {
-//           maxEl = el;
-//           maxCount = modeMap[el];
-//       }
-//   }
-//   return maxEl;
-// }
+
 
 $(document).ready(function() {
   $('#weatherLocation').click(function() {
@@ -65,14 +47,6 @@ $(document).ready(function() {
 });
 
 
-
-
-// if ( body.bikes[i].large_img !== null ) {
-//   bikesInfo.push(`<img src= ${body.bikes[i].large_img} class='bike-img'><br>`);
-// } else {
-//   bikesInfo.push(`./src/assets/images.bikes.jpg`)
-// }
-
 //example
 
 // function clearFields() {
@@ -93,6 +67,35 @@ $(document).ready(function() {
 //       $('.showTemp').text(`The temperature in Kelvins is ${body.main.temp} degrees.`);
 //     }, function(error) {
 //       $('.showErrors').text(`There was an error processing your request: ${error}`);
+//     });
+//   });
+// });
+
+// Code
+// import $ from 'jquery';
+// import 'bootstrap';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+// import './css/styles.css';
+// import BikeRegService from "./js/bike.js";
+
+
+// $(document).ready(function() {
+//   $('#weatherLocation').click(function() {
+//     const city = $('#location').val();
+//     $('#location').val("");
+
+//     let promise = BikeRegService.getBikeReg(city);
+//     promise.then(function(response) {
+//       const body = JSON.parse(response);
+//       let bikesInfo = [];
+//       for (let i = 0; i < body.bikes.length; i++) {
+//         bikesInfo.push(`The manufacturer of the bike is ${body.bikes[i].manufacturer_name}<br>`);
+//         bikesInfo.push(`<img src= ${body.bikes[i].large_img} class='bike-img'>`);
+//         $('.showBikes').html(bikesInfo);
+//       }  
+//     }, function(error) {
+//       $('.showErrors').text(`There was an error processing your request: ${error}`);
+  
 //     });
 //   });
 // });
