@@ -1,6 +1,6 @@
 # _Bike API_
 
-#### By _Kate Kiatsiri**_
+#### By _Kate Kiatsiri, Jeff Terrell, Marisa Edgar_
 
 #### _Bike Index API_
 
@@ -10,7 +10,6 @@
 * _CSS_
 * _Markdown_
 * _JavaScript_
-* _Bootstrap_
 * _jQuery_
 * _Jest_
 * _Webpack_
@@ -23,7 +22,7 @@ _Build an app using the Bike Index API. Your app could list all the bikes that h
 
 * Code editor required (such as Visual Studio Code and Github account.)
 * Navigate this address https://github.com/keidsiri/Portfolio into your browser or 
-<a href="https://github.com/keidsiri/Portfolio"> click here! </a>
+<a href="https://github.com/keidsiri/bike-API"> click here! </a>
 * Clone this repository to your desktop.
 * Navigate to the top of directory
 * Connect to your Github repository
@@ -35,7 +34,7 @@ _Build an app using the Bike Index API. Your app could list all the bikes that h
 
 ## License 
 
-#### [MIT](https://opensource.org/licenses/MIT) Copyright (c) _2021_ _Kate Kiatsiri_
+#### [MIT](https://opensource.org/licenses/MIT) Copyright (c) _2021_ _Kate Kiatsiri, Jeff Terrell, Marisa Edgar_
 
 ## Contact
 
